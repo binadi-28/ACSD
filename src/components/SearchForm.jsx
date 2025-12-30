@@ -14,18 +14,21 @@ import "./SearchForm.css";
 function SearchForm({ onSearch }) {
   const [type, setType] = useState("");
   const [price, setPrice] = useState([0, 1000000]);
-  const [bedrooms, setBedrooms] = useState("");
-  const [dateAdded, setDateAdded] = useState(null);
+  const [bedroomsMin, setBedroomsMin] = useState("");
+  const [bedroomsMax, setBedroomsMax] = useState("");
+  const [dateAddedFrom, setDateAddedFrom] = useState(null);
+  const [dateAddedTo, setDateAddedTo] = useState(null);
   const [postcode, setPostcode] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     onSearch({
       type,
       price,
-      bedrooms,
-      dateAdded,
+      bedroomsMin,
+      bedroomsMax,
+      dateAddedFrom,
+      dateAddedTo,
       postcode,
     });
   };
@@ -41,7 +44,7 @@ function SearchForm({ onSearch }) {
         select
         label="Property Type"
         fullWidth
-        margin="normal"
+        margin="dense"
         value={type}
         onChange={(e) => setType(e.target.value)}
       >
@@ -61,41 +64,70 @@ function SearchForm({ onSearch }) {
         step={50000}
       />
 
-      {/* Bedrooms */}
-      <TextField
-        select
-        label="Bedrooms"
-        fullWidth
-        margin="normal"
-        value={bedrooms}
-        onChange={(e) => setBedrooms(e.target.value)}
-      >
-        <MenuItem value="">Any</MenuItem>
-        <MenuItem value="1">1+</MenuItem>
-        <MenuItem value="2">2+</MenuItem>
-        <MenuItem value="3">3+</MenuItem>
-        <MenuItem value="4">4+</MenuItem>
-      </TextField>
+      {/* Bedrooms Min/Max */}
+      <Box display="flex" gap={1} mb={2}>
+        <TextField
+          select
+          label="Min Bedrooms"
+          fullWidth
+          margin="dense"
+          value={bedroomsMin}
+          onChange={(e) => setBedroomsMin(e.target.value)}
+        >
+          <MenuItem value="">Any</MenuItem>
+          <MenuItem value="1">1+</MenuItem>
+          <MenuItem value="2">2+</MenuItem>
+          <MenuItem value="3">3+</MenuItem>
+          <MenuItem value="4">4+</MenuItem>
+        </TextField>
+        <TextField
+          select
+          label="Max Bedrooms"
+          fullWidth
+          margin="dense"
+          value={bedroomsMax}
+          onChange={(e) => setBedroomsMax(e.target.value)}
+        >
+          <MenuItem value="">Any</MenuItem>
+          <MenuItem value="1">1</MenuItem>
+          <MenuItem value="2">2</MenuItem>
+          <MenuItem value="3">3</MenuItem>
+          <MenuItem value="4">4+</MenuItem>
+        </TextField>
+      </Box>
 
-      {/* Date Added */}
-      <Box className="date-picker-container">
-        <Typography gutterBottom>Date Added After</Typography>
-        <DatePicker
-          selected={dateAdded}
-          onChange={(date) => setDateAdded(date)}
-          dateFormat="yyyy-MM-dd"
-          placeholderText="Select date"
-        />
+      {/* Date Added (from and to) */}
+      <Box display="flex" gap={1} mb={2} className="date-picker-container">
+        <Box flex={1}>
+          <Typography gutterBottom>Date From</Typography>
+          <DatePicker
+            selected={dateAddedFrom}
+            onChange={(date) => setDateAddedFrom(date)}
+            dateFormat="yyyy-MM-dd"
+            placeholderText="Start date"
+            className="date-input"
+          />
+        </Box>
+        <Box flex={1}>
+          <Typography gutterBottom>Date To</Typography>
+          <DatePicker
+            selected={dateAddedTo}
+            onChange={(date) => setDateAddedTo(date)}
+            dateFormat="yyyy-MM-dd"
+            placeholderText="End date"
+            className="date-input"
+          />
+        </Box>
       </Box>
 
       {/* Postcode */}
       <TextField
         label="Postcode Area"
         fullWidth
-        margin="normal"
+        margin="dense"
         value={postcode}
-        onChange={(e) => setPostcode(e.target.value.toUpperCase())}
-        placeholder="e.g. BR5"
+        onChange={(e) => setPostcode(e.target.value.toUpperCase().slice(0, 3))}
+        placeholder="e.g. BR1"
       />
 
       <Button
