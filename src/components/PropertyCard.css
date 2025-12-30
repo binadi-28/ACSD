@@ -1,0 +1,28 @@
+.property-card {
+  max-width: 345px;
+}
+
+.property-card-content {
+  padding: 16px; /* optional, matches default MUI CardContent padding */
+}
+
+.property-card-title {
+  font-size: 1.25rem; /* MUI h6 approx */
+  margin-bottom: 4px;
+}
+
+.property-card-subtitle {
+  font-size: 0.875rem; /* MUI body2 */
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.property-card-buttons {
+  display: flex;
+  gap: 8px; /* spacing between buttons */
+  margin-top: 8px; /* matches mt:1 → 8px */
+}
+
+.property-card-button {
+  font-size: 0.875rem;
+}

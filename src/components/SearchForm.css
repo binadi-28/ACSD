@@ -1,0 +1,17 @@
+.search-form {
+  padding: 16px; /* sx: p:2 → 2*8px */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* sx: borderRadius:2 → 2*4px */
+}
+
+.search-form-title {
+  margin-bottom: 16px;
+}
+
+.date-picker-container {
+  margin-top: 16px; /* sx: mt:2 → 16px */
+}
+
+.search-button {
+  margin-top: 16px; /* sx: mt:2 → 16px */
+}
