@@ -1,28 +1,393 @@
+/* PropertyCard.css */
 .property-card {
   max-width: 345px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  position: relative;
 }
 
+.property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-color: #2196f3;
+}
+
+/* Card image styling */
+.property-card .MuiCardMedia-root {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.property-card:hover .MuiCardMedia-root {
+  transform: scale(1.05);
+}
+
+/* Content area */
 .property-card-content {
-  padding: 16px; /* optional, matches default MUI CardContent padding */
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
 }
 
+/* Price styling */
 .property-card-title {
-  font-size: 1.25rem; /* MUI h6 approx */
-  margin-bottom: 4px;
-}
-
-.property-card-subtitle {
-  font-size: 0.875rem; /* MUI body2 */
-  color: #555;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
   margin-bottom: 8px;
+  line-height: 1.2;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
+/* Property details subtitle */
+.property-card-subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 16px;
+  flex-grow: 1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Price highlight badge */
+.property-card-highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-left: 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+  box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+}
+
+/* Property details row with icons */
+.property-card-details {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  color: #555;
+  font-size: 0.9rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.property-card-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.property-card-detail-item svg {
+  font-size: 18px;
+  color: #2196f3;
+}
+
+/* Location styling */
+.property-card-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #666;
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.property-card-location svg {
+  font-size: 18px;
+  color: #ff6b6b;
+}
+
+/* Status badge */
+.property-card-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.property-card-status.sold {
+  background-color: #ffebee;
+  color: #d32f2f;
+  border: 1px solid #ffcdd2;
+}
+
+.property-card-status.available {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.property-card-status.pending {
+  background-color: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffe0b2;
+}
+
+/* Buttons container */
 .property-card-buttons {
   display: flex;
-  gap: 8px; /* spacing between buttons */
-  margin-top: 8px; /* matches mt:1 → 8px */
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
 }
 
+/* Button styling */
 .property-card-button {
+  flex: 1;
+  font-weight: 600;
+  text-transform: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  transition: all 0.2s ease;
   font-size: 0.875rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Favourite button */
+.property-card-button:first-child {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+}
+
+.property-card-button:first-child:hover {
+  background: linear-gradient(135deg, #ff5252 0%, #e53935 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 82, 82, 0.4);
+}
+
+.property-card-button:first-child:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(255, 82, 82, 0.3);
+}
+
+/* View button */
+.property-card-button:last-child {
+  background-color: transparent;
+  color: #2196f3;
+  border: 2px solid #2196f3;
+}
+
+.property-card-button:last-child:hover {
+  background-color: rgba(33, 150, 243, 0.04);
+  border-color: #1976d2;
+  color: #1976d2;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+}
+
+/* Favourite heart icon in top-right */
+.property-card-favourite {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  padding: 8px;
+  z-index: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.property-card-favourite:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.property-card-favourite svg {
+  font-size: 20px;
+  color: #ff6b6b;
+}
+
+.property-card-favourite.active svg {
+  color: #d32f2f;
+  filter: drop-shadow(0 2px 4px rgba(211, 47, 47, 0.3));
+}
+
+/* Drag and drop effects */
+.property-card:active {
+  cursor: grabbing;
+}
+
+.property-card.drag-over {
+  border: 2px dashed #2196f3;
+  background-color: rgba(33, 150, 243, 0.05);
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+/* Loading skeleton */
+.property-card.loading {
+  background: linear-gradient(90deg, #f5f5f5 25%, #e8e8e8 50%, #f5f5f5 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 1.5s infinite linear;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .property-card {
+    max-width: 100%;
+    margin: 0 8px;
+  }
+  
+  .property-card-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .property-card-button {
+    width: 100%;
+  }
+  
+  .property-card-details {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .property-card-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .property-card-content {
+    padding: 16px;
+  }
+  
+  .property-card-title {
+    font-size: 1.125rem;
+  }
+  
+  .property-card-highlight {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    margin-left: 6px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .property-card {
+    background-color: #1e1e1e;
+    border-color: #333;
+    color: #ffffff;
+  }
+  
+  .property-card-content {
+    background-color: #1e1e1e;
+  }
+  
+  .property-card-title {
+    color: #ffffff;
+  }
+  
+  .property-card-subtitle {
+    color: #b0b0b0;
+  }
+  
+  .property-card-details {
+    color: #cccccc;
+  }
+  
+  .property-card-location {
+    color: #b0b0b0;
+  }
+  
+  .property-card-buttons {
+    border-top-color: #333;
+  }
+  
+  .property-card-button:last-child {
+    background-color: transparent;
+    color: #4dabf7;
+    border-color: #4dabf7;
+  }
+  
+  .property-card-button:last-child:hover {
+    background-color: rgba(77, 171, 247, 0.1);
+    color: #64b5f6;
+    border-color: #64b5f6;
+  }
+  
+  .property-card-favourite {
+    background: rgba(30, 30, 30, 0.9);
+  }
+}
+
+/* Focus states for accessibility */
+.property-card-button:focus {
+  outline: 2px solid #2196f3;
+  outline-offset: 2px;
+}
+
+.property-card-button:focus-visible {
+  outline: 2px solid #2196f3;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar for card content if needed */
+.property-card-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.property-card-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2px;
+}
+
+.property-card-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 2px;
+}
+
+.property-card-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
